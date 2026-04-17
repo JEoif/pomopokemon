@@ -1,7 +1,7 @@
 // ========== CATEGORIES ==========
-export type CategoryId = 'sport' | 'admin' | 'writing' | 'creative' | 'housework' | 'craft' | 'business' | 'other';
+export type CategoryId = 'sport' | 'admin' | 'writing' | 'creative' | 'drawing' | 'housework' | 'craft' | 'business' | 'other';
 
-export const ALL_CATEGORIES: CategoryId[] = ['sport', 'admin', 'writing', 'creative', 'housework', 'craft', 'business', 'other'];
+export const ALL_CATEGORIES: CategoryId[] = ['sport', 'admin', 'writing', 'creative', 'drawing', 'housework', 'craft', 'business', 'other'];
 
 // ========== TIMER ==========
 export type TimerDuration = 1500 | 2700 | 3600; // 25min, 45min, 1h

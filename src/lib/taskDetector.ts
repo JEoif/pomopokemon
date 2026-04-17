@@ -109,6 +109,22 @@ const KEYWORD_MAP: Record<CategoryId, string[]> = {
     'cook', 'grocery', 'groceries', 'garden', 'gardening', 'repair',
     'organize', 'declutter', 'tidy', 'housework', 'chores',
   ],
+  drawing: [
+    // FR
+    'dessin', 'dessiner', 'croquis', 'esquisse', 'trait', 'contour', 'ombrage',
+    'aquarelle', 'acrylique', 'huile', 'pastel', 'fusain', 'encre', 'feutre',
+    'crayon', 'illustration', 'illustrer', 'calligraphie', 'manga', 'bande dessinee',
+    'comic', 'storyboard', 'character design', 'concept art', 'fanart', 'portrait',
+    'paysage', 'nature morte', 'croquis', 'carnet de croquis', 'sketchbook',
+    'procreate', 'clip studio', 'photoshop', 'tablette graphique', 'wacom',
+    'pixel art', 'coloring', 'coloriage', 'colorier', 'peinture numerique',
+    'street art', 'graffiti', 'lettering', 'zenzentangle', 'zentangle',
+    // EN
+    'draw', 'drawing', 'sketch', 'sketching', 'illustration', 'illustrate',
+    'doodle', 'ink', 'pencil', 'paint', 'painting', 'watercolor', 'acrylic',
+    'charcoal', 'pastel', 'portrait', 'landscape', 'figure drawing', 'comic',
+    'manga', 'concept art', 'pixel art', 'digital art', 'storyboard',
+  ],
   craft: [
     // FR
     'artisanat', 'artisan', 'menuisier', 'menuiserie', 'charpente', 'maçon', 'maconnerie',
@@ -191,6 +207,7 @@ export const CATEGORY_META: Record<CategoryId, { emoji: string; label: string; g
   admin:     { emoji: '📋', label: 'Administratif',    gradient: 'linear-gradient(135deg, #3b82f6, #6366f1)' },
   writing:   { emoji: '✍️', label: 'Ecriture',         gradient: 'linear-gradient(135deg, #8b5cf6, #ec4899)' },
   creative:  { emoji: '🎨', label: 'Creativite',       gradient: 'linear-gradient(135deg, #f472b6, #f59e0b)' },
+  drawing:   { emoji: '✏️', label: 'Dessin',           gradient: 'linear-gradient(135deg, #a855f7, #ec4899)' },
   housework: { emoji: '🏠', label: 'Menage',           gradient: 'linear-gradient(135deg, #10b981, #06b6d4)' },
   craft:     { emoji: '🔨', label: 'Artisanat',        gradient: 'linear-gradient(135deg, #d97706, #92400e)' },
   business:  { emoji: '💼', label: 'Business',         gradient: 'linear-gradient(135deg, #0ea5e9, #6366f1)' },
@@ -214,6 +231,10 @@ export const CATEGORY_TYPE_MAP: Record<CategoryId, { primary: number[]; secondar
   creative: {
     primary: [18, 10],   // Fairy, Fire
     secondary: [12, 3],  // Grass, Poison
+  },
+  drawing: {
+    primary: [18, 14],   // Fairy, Psychic
+    secondary: [8, 3],   // Ghost, Poison
   },
   housework: {
     primary: [12, 11],   // Grass, Water

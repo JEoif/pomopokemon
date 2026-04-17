@@ -475,6 +475,18 @@ export const THEMATIC_POOLS: Record<string, number[]> = {
     449, // Hippopotas (earth)
     556, // Maractus (cactus/plant care)
   ],
+  drawing: [
+    235, // Smeargle (peintre — LE pokemon du dessin)
+    132, // Ditto (transformiste/créateur)
+    175, // Togepi (douceur/créativité)
+    351, // Castform (change de forme)
+    352, // Kecleon (change de couleur)
+    315, // Roselia (beau)
+    420, // Cherubi (esthétique)
+    546, // Cottonee (fantaisie)
+    574, // Gothita (style gothique)
+    607, // Litwick (lumière/ombre)
+  ],
   craft: [
     74,  // Geodude (rock/stone)
     95,  // Onix (rock/stone)

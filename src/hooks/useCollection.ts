@@ -22,6 +22,7 @@ const INITIAL_STATE: CollectionState = {
       admin: 0,
       writing: 0,
       creative: 0,
+      drawing: 0,
       housework: 0,
       craft: 0,
       business: 0,

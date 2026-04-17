@@ -33,11 +33,11 @@ export function AuthModal({ onClose }: AuthModalProps) {
         setTab('login');
       }
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Erreur inconnue';
+      const msg = err instanceof Error ? err.message : String(err);
       if (msg.includes('Invalid login') || msg.includes('invalid_credentials')) setError('Pseudo ou mot de passe incorrect.');
       else if (msg.includes('already registered') || msg.includes('already been registered')) setError('Ce pseudo est déjà pris.');
       else if (msg.includes('Password should be')) setError('Mot de passe trop court (6 caractères min).');
-      else setError(msg);
+      else setError(msg || 'Erreur inconnue');
     } finally {
       setLoading(false);
     }

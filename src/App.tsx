@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef } from 'react';
+import { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { Header } from './components/Layout/Header';
 import { TaskInput } from './components/TaskInput/TaskInput';
 import { Timer } from './components/Timer/Timer';
@@ -57,7 +57,7 @@ export default function App() {
   useCloudSync(user?.id ?? null, collection, handleCloudLoad);
 
   // Track collection changes for sync indicator
-  useMemo(() => {
+  useEffect(() => {
     onCollectionChange();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collection]);

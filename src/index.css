@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pokemon-electric: #f8d030;
+  --color-pokemon-steel: #b8b8d0;
+  --color-pokemon-psychic: #f85888;
+  --color-pokemon-fairy: #ee99ac;
+  --color-pokemon-ghost: #705898;
+  --color-pokemon-fire: #f08030;
+  --color-pokemon-fighting: #c03028;
+  --color-pokemon-rock: #b8a038;
+  --color-pokemon-dark: #705848;
+  --color-pokemon-normal: #a8a878;
+  --color-pokemon-ground: #e0c068;
+  --color-pokemon-water: #6890f0;
+  --color-pokemon-grass: #78c850;
+  --color-pokemon-poison: #a040a0;
+  --color-pokemon-ice: #98d8d8;
+  --color-pokemon-bug: #a8b820;
+  --color-pokemon-dragon: #7038f8;
+  --color-pokemon-flying: #a890f0;
+}
+
+@keyframes pokeball-shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.3); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-pokeball-shake {
+  animation: pokeball-shake 0.4s ease-in-out;
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+body {
+  margin: 0;
+  background: #0f172a;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}

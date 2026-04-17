@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useRef } from 'react';
 import { Header } from './components/Layout/Header';
 import { TaskInput } from './components/TaskInput/TaskInput';
 import { Timer } from './components/Timer/Timer';
@@ -6,9 +6,12 @@ import { RewardModal } from './components/Reward/RewardModal';
 import { Collection } from './components/Collection/Collection';
 import { RosterView } from './components/Roster/RosterView';
 import { ProfileModal } from './components/Profile/ProfileModal';
+import { AuthModal } from './components/Auth/AuthModal';
 import { useTimer } from './hooks/useTimer';
 import { useCollection } from './hooks/useCollection';
 import { usePokemonApi } from './hooks/usePokemonApi';
+import { useAuth } from './hooks/useAuth';
+import { useCloudSync } from './hooks/useCloudSync';
 import { CATEGORY_META } from './lib/taskDetector';
 import type { AppView, CategoryId, CollectionState, PokemonReward, TimerDuration, TimerPhase } from './types';
 
@@ -21,6 +24,11 @@ export default function App() {
   const [timerPhaseOverride, setTimerPhaseOverride] = useState<TimerPhase | null>(null);
   const [selectedDuration, setSelectedDuration] = useState<TimerDuration>(1500);
   const [showProfile, setShowProfile] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const syncTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const { user, signOut } = useAuth();
 
   const {
     collection,
@@ -33,6 +41,26 @@ export default function App() {
     uniqueCount,
     shinyCount,
   } = useCollection();
+
+  // Cloud sync — auto-saves 3s after any change when logged in
+  const handleCloudLoad = useCallback((state: CollectionState) => {
+    setCollection(state);
+  }, [setCollection]);
+
+  const onCollectionChange = useCallback(() => {
+    if (!user) return;
+    setSyncing(true);
+    if (syncTimeout.current) clearTimeout(syncTimeout.current);
+    syncTimeout.current = setTimeout(() => setSyncing(false), 4000);
+  }, [user]);
+
+  useCloudSync(user?.id ?? null, collection, handleCloudLoad);
+
+  // Track collection changes for sync indicator
+  useMemo(() => {
+    onCollectionChange();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [collection]);
 
   const { getReward } = usePokemonApi();
 
@@ -58,7 +86,6 @@ export default function App() {
   }, []);
 
   const timer = useTimer(handleWorkComplete, handleBreakComplete);
-
   const currentPhase = timerPhaseOverride || timer.phase;
 
   const handleTaskStart = (taskName: string, category: CategoryId, duration: TimerDuration) => {
@@ -114,6 +141,9 @@ export default function App() {
         onChangeView={setView}
         collectionCount={collection.pokemon.length}
         onOpenProfile={() => setShowProfile(true)}
+        onOpenAuth={() => setShowAuth(true)}
+        user={user}
+        syncing={syncing}
       />
 
       <main className="flex-1 flex flex-col items-center justify-center py-8">
@@ -132,16 +162,12 @@ export default function App() {
               <>
                 <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-slate-800/60 border border-slate-700/30 max-w-sm">
                   {categoryMeta && (
-                    <span
-                      className="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0"
-                      style={{ background: categoryMeta.gradient }}
-                    >
+                    <span className="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0" style={{ background: categoryMeta.gradient }}>
                       {categoryMeta.emoji}
                     </span>
                   )}
                   <span className="text-sm text-slate-300 truncate">
-                    {currentPhase === 'work' ? '🔥' : '☕'}{' '}
-                    {currentTaskName || selectedCategory}
+                    {currentPhase === 'work' ? '🔥' : '☕'} {currentTaskName || selectedCategory}
                   </span>
                 </div>
 
@@ -180,11 +206,7 @@ export default function App() {
 
         {view === 'roster' && (
           <div className="w-full">
-            <RosterView
-              collection={collection}
-              onRemoveFromRoster={removeFromRoster}
-              onEvolve={evolveRosterPokemon}
-            />
+            <RosterView collection={collection} onRemoveFromRoster={removeFromRoster} onEvolve={evolveRosterPokemon} />
           </div>
         )}
 
@@ -204,14 +226,15 @@ export default function App() {
 
       <RewardModal pokemon={currentReward} onCollect={handleCollectPokemon} />
 
+      {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+
       {showProfile && (
         <ProfileModal
           collection={collection}
+          user={user}
           onClose={() => setShowProfile(false)}
-          onImport={(state: CollectionState) => {
-            setCollection(state);
-            setShowProfile(false);
-          }}
+          onSignOut={() => { signOut(); setShowProfile(false); }}
+          onImport={(state: CollectionState) => { setCollection(state); setShowProfile(false); }}
         />
       )}
     </div>

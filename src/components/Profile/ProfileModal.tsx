@@ -1,16 +1,19 @@
 import { useState, useRef } from 'react';
 import type { CollectionState } from '../../types';
+import type { AuthUser } from '../../lib/supabase';
 
 const STORAGE_KEY = 'pomopokemon-save';
 const PROFILE_NAME_KEY = 'pomopokemon-profile-name';
 
 interface ProfileModalProps {
   collection: CollectionState;
+  user: AuthUser | null;
   onClose: () => void;
+  onSignOut: () => void;
   onImport: (state: CollectionState) => void;
 }
 
-export function ProfileModal({ collection, onClose, onImport }: ProfileModalProps) {
+export function ProfileModal({ collection, user, onClose, onSignOut, onImport }: ProfileModalProps) {
   const [name, setName] = useState(() => localStorage.getItem(PROFILE_NAME_KEY) ?? '');
   const [nameInput, setNameInput] = useState(name);
   const [importError, setImportError] = useState<string | null>(null);
@@ -99,17 +102,29 @@ export function ProfileModal({ collection, onClose, onImport }: ProfileModalProp
         <div className="px-5 pb-5 flex flex-col gap-4">
           {/* Avatar + name */}
           <div className="flex items-center gap-3 bg-slate-800/50 rounded-2xl p-3 border border-slate-700/30">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-2xl flex-shrink-0">
-              🎮
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-xl flex-shrink-0 font-bold text-white">
+              {(user?.username || name || '?').slice(0, 2).toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
-              {name ? (
-                <p className="text-white font-semibold truncate">{name}</p>
+              {user ? (
+                <>
+                  <p className="text-white font-semibold truncate">{user.username || user.email}</p>
+                  <p className="text-xs text-emerald-400">☁ Sauvegarde cloud active</p>
+                </>
+              ) : name ? (
+                <>
+                  <p className="text-white font-semibold truncate">{name}</p>
+                  <p className="text-xs text-slate-500">Dresseur local · <span className="text-pink-400">Connecte-toi pour sauver en cloud</span></p>
+                </>
               ) : (
                 <p className="text-slate-400 italic text-sm">Pas encore de nom</p>
               )}
-              <p className="text-xs text-slate-500">Dresseur local</p>
             </div>
+            {user && (
+              <button onClick={onSignOut} className="text-xs text-slate-500 hover:text-red-400 transition-colors flex-shrink-0">
+                Déco
+              </button>
+            )}
           </div>
 
           {/* Name input */}

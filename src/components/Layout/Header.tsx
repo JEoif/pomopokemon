@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { AppView } from '../../types';
+import type { AuthUser } from '../../lib/supabase';
 
 const PROFILE_NAME_KEY = 'pomopokemon-profile-name';
 
@@ -8,17 +9,23 @@ interface HeaderProps {
   onChangeView: (view: AppView) => void;
   collectionCount: number;
   onOpenProfile: () => void;
+  onOpenAuth: () => void;
+  user: AuthUser | null;
+  syncing: boolean;
 }
 
-export function Header({ view, onChangeView, collectionCount, onOpenProfile }: HeaderProps) {
-  const [profileName, setProfileName] = useState('');
+export function Header({ view, onChangeView, collectionCount, onOpenProfile, onOpenAuth, user, syncing }: HeaderProps) {
+  const [localName, setLocalName] = useState('');
 
   useEffect(() => {
-    const update = () => setProfileName(localStorage.getItem(PROFILE_NAME_KEY) ?? '');
+    const update = () => setLocalName(localStorage.getItem(PROFILE_NAME_KEY) ?? '');
     update();
     window.addEventListener('storage', update);
     return () => window.removeEventListener('storage', update);
   }, []);
+
+  const displayName = user?.username || localName;
+  const initials = displayName ? displayName.slice(0, 2).toUpperCase() : null;
 
   return (
     <header className="flex items-center justify-between px-4 py-3 border-b border-slate-800/60">
@@ -27,6 +34,14 @@ export function Header({ view, onChangeView, collectionCount, onOpenProfile }: H
         <h1 className="text-lg font-bold text-white tracking-tight">
           Pomo<span className="text-pink-400">Pokemon</span>
         </h1>
+        {/* Sync indicator */}
+        {user && (
+          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium transition-all ${
+            syncing ? 'bg-yellow-500/20 text-yellow-400' : 'bg-emerald-500/20 text-emerald-400'
+          }`}>
+            {syncing ? '↑ sync...' : '☁ sauvé'}
+          </span>
+        )}
       </div>
 
       <div className="flex items-center gap-2">
@@ -40,20 +55,25 @@ export function Header({ view, onChangeView, collectionCount, onOpenProfile }: H
           />
         </nav>
 
-        {/* Profile button */}
-        <button
-          onClick={onOpenProfile}
-          className="w-8 h-8 rounded-xl bg-slate-800/60 border border-slate-700/30 flex items-center justify-center hover:bg-slate-700 transition-all overflow-hidden"
-          title={profileName || 'Mon profil'}
-        >
-          {profileName ? (
-            <span className="text-xs font-bold text-pink-400 uppercase leading-none">
-              {profileName.slice(0, 2)}
+        {/* Auth / Profile button */}
+        {user ? (
+          <button
+            onClick={onOpenProfile}
+            className="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center hover:opacity-80 transition-all"
+            title={displayName || 'Mon profil'}
+          >
+            <span className="text-xs font-bold text-white leading-none">
+              {initials ?? '👤'}
             </span>
-          ) : (
-            <span className="text-sm">👤</span>
-          )}
-        </button>
+          </button>
+        ) : (
+          <button
+            onClick={onOpenAuth}
+            className="px-3 py-1.5 rounded-xl bg-pink-500/20 border border-pink-500/30 text-pink-400 text-xs font-medium hover:bg-pink-500/30 transition-all"
+          >
+            Connexion
+          </button>
+        )}
       </div>
     </header>
   );

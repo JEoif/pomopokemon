@@ -2,29 +2,46 @@ import type { RarityTier } from '../types';
 
 /**
  * Pokemon pools organized by rarity tier.
- * Base-form Pokemon in R1/R2, strong/final forms in R3.
- * Sub-legendaries in R4, box legends & mythicals in R5.
- * Covers Gen 1–9 (IDs 1–1025).
+ * R1 = base/common forms | R2 = mid-evos + interesting singles + starters
+ * R3 = final evolutions + powerful singles | R4 = sub-legends | R5 = box legends & mythicals
+ * Covers Gen 1–9 (IDs 1–1025).  Gen 1-3 are complete (all 386 included).
  */
 
 // ──────────────────────────────────────────────────────────────
-// RARITY 1 — Commun (55%) — Route/early-game base forms
+// RARITY 1 — Commun (55%)
 // ──────────────────────────────────────────────────────────────
 export const RARITY_1_POOL: number[] = [
   // === Gen 1 ===
   10,  // Caterpie
+  11,  // Metapod
   13,  // Weedle
+  14,  // Kakuna
   16,  // Pidgey
   19,  // Rattata
+  21,  // Spearow
   23,  // Ekans
+  29,  // Nidoran♀
+  32,  // Nidoran♂
   41,  // Zubat
   43,  // Oddish
+  46,  // Paras
+  48,  // Venonat
   50,  // Diglett
+  52,  // Meowth
+  56,  // Mankey
   60,  // Poliwag
   66,  // Machop
   69,  // Bellsprout
   74,  // Geodude
+  84,  // Doduo
+  86,  // Seel
+  88,  // Grimer
+  90,  // Shellder
+  96,  // Drowzee
+  98,  // Krabby
   100, // Voltorb
+  102, // Exeggcute
+  109, // Koffing
   118, // Goldeen
   129, // Magikarp
   172, // Pichu
@@ -36,30 +53,50 @@ export const RARITY_1_POOL: number[] = [
   165, // Ledyba
   167, // Spinarak
   170, // Chinchou
+  173, // Cleffa
+  177, // Natu
   183, // Marill
   187, // Hoppip
   191, // Sunkern
   194, // Wooper
+  204, // Pineco
+  216, // Teddiursa
   220, // Swinub
+  223, // Remoraid
   231, // Phanpy
+  238, // Smoochum
+  239, // Elekid
+  240, // Magby
   // === Gen 3 ===
   261, // Poochyena
   263, // Zigzagoon
   265, // Wurmple
+  266, // Silcoon
+  268, // Cascoon
   270, // Lotad
   273, // Seedot
   276, // Taillow
+  278, // Wingull
   283, // Surskit
   285, // Shroomish
+  290, // Nincada
   293, // Whismur
+  298, // Azurill
+  300, // Skitty
+  307, // Meditite
   309, // Electrike
   316, // Gulpin
+  320, // Wailmer
   322, // Numel
   325, // Spoink
   328, // Trapinch
+  331, // Cacnea
   339, // Barboach
+  343, // Baltoy
   353, // Shuppet
   361, // Snorunt
+  363, // Spheal
+  366, // Clamperl
   // === Gen 4 ===
   396, // Starly
   399, // Bidoof
@@ -154,7 +191,7 @@ export const RARITY_1_POOL: number[] = [
 ];
 
 // ──────────────────────────────────────────────────────────────
-// RARITY 2 — Peu Commun (31%) — Starters, interesting bases, cool singles
+// RARITY 2 — Peu Commun (31%) — Mid-evos, starters, cool singles
 // ──────────────────────────────────────────────────────────────
 export const RARITY_2_POOL: number[] = [
   // === Gen 1 starters ===
@@ -171,34 +208,80 @@ export const RARITY_2_POOL: number[] = [
   77,  // Ponyta
   81,  // Magnemite
   92,  // Gastly
+  // === Gen 1 mid-evos & singles ===
+  17,  // Pidgeotto
+  20,  // Raticate
+  24,  // Arbok
+  25,  // Pikachu
+  30,  // Nidorina
+  33,  // Nidorino
+  35,  // Clefairy
+  39,  // Jigglypuff
+  42,  // Golbat
+  44,  // Gloom
+  47,  // Parasect
+  49,  // Venomoth
+  57,  // Primeape
+  61,  // Poliwhirl
+  64,  // Kadabra
+  67,  // Machoke
+  70,  // Weepinbell
+  75,  // Graveler
+  79,  // Slowpoke
+  82,  // Magneton
+  83,  // Farfetch'd
+  93,  // Haunter
   95,  // Onix
+  97,  // Hypno
   104, // Cubone
   111, // Rhyhorn
+  113, // Chansey
+  115, // Kangaskhan
   116, // Horsea
+  117, // Seadra
+  120, // Staryu
+  122, // Mr. Mime
   123, // Scyther
+  124, // Jynx
+  125, // Electabuzz
+  126, // Magmar
+  128, // Tauros
+  132, // Ditto
   133, // Eevee
   138, // Omanyte
   140, // Kabuto
   147, // Dratini
-  // === Gen 1 singles ===
-  83,  // Farfetch'd
-  115, // Kangaskhan
-  128, // Tauros
-  132, // Ditto
+  148, // Dragonair
   // === Gen 2 starters ===
   152, // Chikorita
   155, // Cyndaquil
   158, // Totodile
-  // === Gen 2 cool bases ===
+  // === Gen 2 mid-evos & singles ===
+  153, // Bayleef
+  156, // Quilava
+  159, // Croconaw
   175, // Togepi
+  176, // Togetic
+  178, // Xatu
   179, // Mareep
+  180, // Flaaffy
+  188, // Skiploom
+  190, // Aipom
+  193, // Yanma
   198, // Murkrow
+  200, // Misdreavus
+  202, // Wobbuffet
+  203, // Girafarig
+  205, // Forretress
   207, // Gligar
   209, // Snubbull
   215, // Sneasel
+  221, // Piloswine
+  226, // Mantine
   228, // Houndour
+  236, // Tyrogue
   246, // Larvitar
-  280, // Ralts
+  247, // Pupitar
   // === Gen 2 singles ===
   201, // Unown
   206, // Dunsparce
@@ -213,20 +296,40 @@ export const RARITY_2_POOL: number[] = [
   252, // Treecko
   255, // Torchic
   258, // Mudkip
-  // === Gen 3 cool bases ===
+  // === Gen 3 mid-evos & singles ===
+  253, // Grovyle
+  256, // Combusken
+  259, // Marshtomp
+  271, // Lombre
+  274, // Nuzleaf
+  279, // Pelipper
+  280, // Ralts
+  281, // Kirlia
   287, // Slakoth
+  288, // Vigoroth
+  294, // Loudred
   296, // Makuhita
+  299, // Nosepass
   304, // Aron
+  301, // Delcatty
+  305, // Lairon
   315, // Roselia
   318, // Carvanha
+  329, // Vibrava
   333, // Swablu
   341, // Corphish
   345, // Lileep
   347, // Anorith
+  349, // Feebas
   355, // Duskull
+  356, // Dusclops
+  358, // Chimecho
   360, // Wynaut
+  364, // Sealeo
   371, // Bagon
+  372, // Shelgon
   374, // Beldum
+  375, // Metang
   // === Gen 3 singles ===
   302, // Sableye
   303, // Mawile
@@ -352,10 +455,10 @@ export const RARITY_2_POOL: number[] = [
   875, // Eiscue
   876, // Indeedee
   877, // Morpeko
-  880, // Dracozolt (fossil)
-  881, // Arctozolt (fossil)
-  882, // Dracovish (fossil)
-  883, // Arctovish (fossil)
+  880, // Dracozolt
+  881, // Arctozolt
+  882, // Dracovish
+  883, // Arctovish
   885, // Dreepy
   // === Gen 9 starters ===
   906, // Sprigatito
@@ -379,45 +482,154 @@ export const RARITY_2_POOL: number[] = [
 ];
 
 // ──────────────────────────────────────────────────────────────
-// RARITY 3 — Rare (12%) — Final evolutions, powerful singles, pseudo-legends
+// RARITY 3 — Rare (12%) — Final evolutions, powerful singles
 // ──────────────────────────────────────────────────────────────
 export const RARITY_3_POOL: number[] = [
-  // === Gen 1 finals & strong singles ===
+  // === Gen 1 finals ===
+  2,   // Ivysaur
   3,   // Venusaur
+  5,   // Charmeleon
   6,   // Charizard
+  8,   // Wartortle
   9,   // Blastoise
+  12,  // Butterfree
+  15,  // Beedrill
+  18,  // Pidgeot
+  22,  // Fearow
+  26,  // Raichu
+  28,  // Sandslash
+  31,  // Nidoqueen
+  34,  // Nidoking
+  36,  // Clefable
+  38,  // Ninetales
+  40,  // Wigglytuff
+  45,  // Vileplume
+  51,  // Dugtrio
+  53,  // Persian
+  55,  // Golduck
+  59,  // Arcanine
+  62,  // Poliwrath
+  65,  // Alakazam
+  68,  // Machamp
+  71,  // Victreebel
+  73,  // Tentacruel
+  76,  // Golem
+  78,  // Rapidash
+  80,  // Slowbro
+  85,  // Dodrio
+  87,  // Dewgong
+  89,  // Muk
+  91,  // Cloyster
+  94,  // Gengar
+  99,  // Kingler
+  101, // Electrode
+  103, // Exeggutor
+  105, // Marowak
+  106, // Hitmonlee
+  107, // Hitmonchan
   108, // Lickitung
+  110, // Weezing
+  112, // Rhydon
   114, // Tangela
+  119, // Seaking
+  121, // Starmie
   127, // Pinsir
+  130, // Gyarados
   131, // Lapras
+  134, // Vaporeon
+  135, // Jolteon
+  136, // Flareon
   137, // Porygon
+  139, // Omastar
+  141, // Kabutops
   142, // Aerodactyl
   143, // Snorlax
-  212, // Scizor
-  // === Gen 2 finals & strong singles ===
+  149, // Dragonite
+  // === Gen 1 strong singles ===
+  212, // Scizor (evo of Scyther)
+  // === Gen 2 finals ===
   154, // Meganium
   157, // Typhlosion
   160, // Feraligatr
-  185, // Sudowoodo
+  162, // Furret
+  164, // Noctowl
+  166, // Ledian
+  168, // Ariados
+  169, // Crobat
+  171, // Lanturn
+  181, // Ampharos
+  182, // Bellossom
+  184, // Azumarill
+  186, // Politoed
+  189, // Jumpluff
+  192, // Sunflora
+  195, // Quagsire
+  196, // Espeon
+  197, // Umbreon
   199, // Slowking
+  208, // Steelix
+  210, // Granbull
+  217, // Ursaring
+  219, // Magcargo
+  224, // Octillery
   227, // Skarmory
+  229, // Houndoom
+  230, // Kingdra
+  232, // Donphan
+  233, // Porygon2
+  237, // Hitmontop
   241, // Miltank
+  242, // Blissey
   248, // Tyranitar
-  // === Gen 3 finals & strong singles ===
+  185, // Sudowoodo
+  // === Gen 3 finals ===
   254, // Sceptile
   257, // Blaziken
   260, // Swampert
+  262, // Mightyena
+  264, // Linoone
+  267, // Beautifly
+  269, // Dustox
+  272, // Ludicolo
+  275, // Shiftry
+  277, // Swellow
+  282, // Gardevoir
+  284, // Masquerain
+  286, // Breloom
   289, // Slaking
+  291, // Ninjask
+  292, // Shedinja
+  295, // Exploud
+  297, // Hariyama
   306, // Aggron
+  308, // Medicham
+  310, // Manectric
+  317, // Swalot
+  319, // Sharpedo
+  321, // Wailord
+  323, // Camerupt
+  326, // Grumpig
   330, // Flygon
+  332, // Cacturne
+  334, // Altaria
+  340, // Whiscash
+  342, // Crawdaunt
   344, // Claydol
+  346, // Cradily
+  348, // Armaldo
+  350, // Milotic
+  354, // Banette
   362, // Glalie
+  365, // Walrein
+  367, // Huntail
+  368, // Gorebyss
   373, // Salamence
   376, // Metagross
+  // === Gen 3 singles ===
   423, // Gastrodon
   442, // Spiritomb
   452, // Drapion
-  // === Gen 4 finals & strong singles ===
+  // === Gen 4 finals ===
   389, // Torterra
   392, // Infernape
   395, // Empoleon
@@ -435,7 +647,7 @@ export const RARITY_3_POOL: number[] = [
   476, // Probopass
   477, // Dusknoir
   478, // Froslass
-  // === Gen 5 finals & strong singles ===
+  // === Gen 5 finals ===
   497, // Serperior
   500, // Emboar
   503, // Samurott
@@ -489,6 +701,7 @@ export const RARITY_3_POOL: number[] = [
   763, // Tsareena
   773, // Silvally
   784, // Kommo-o
+  808, // Meltan
   809, // Melmetal
   // === Gen 8 finals & strong singles ===
   812, // Rillaboom
@@ -508,7 +721,7 @@ export const RARITY_3_POOL: number[] = [
   879, // Copperajah
   884, // Duraludon
   887, // Dragapult
-  // === Gen 8 cross-gen evolutions (Hisui/Crown Tundra) ===
+  // === Gen 8 cross-gen evolutions ===
   899, // Wyrdeer
   900, // Kleavor
   901, // Ursaluna
@@ -553,7 +766,7 @@ export const RARITY_3_POOL: number[] = [
   1017, // Ogerpon
   1018, // Archaludon
   1019, // Hydrapple
-  // === Gen 9 Paradox Pokémon (Ancient/Future) ===
+  // === Gen 9 Paradox Pokémon ===
   984, // Great Tusk
   985, // Scream Tail
   986, // Brute Bonnet
@@ -572,28 +785,28 @@ export const RARITY_3_POOL: number[] = [
 // RARITY 4 — Épique (1.5%) — Sub-legendaries, Ultra Beasts
 // ──────────────────────────────────────────────────────────────
 export const RARITY_4_POOL: number[] = [
-  // === Gen 1 sub-legends ===
+  // === Gen 1 ===
   144, // Articuno
   145, // Zapdos
   146, // Moltres
-  // === Gen 2 sub-legends ===
+  // === Gen 2 ===
   243, // Raikou
   244, // Entei
   245, // Suicune
-  // === Gen 3 sub-legends ===
+  // === Gen 3 ===
   377, // Regirock
   378, // Regice
   379, // Registeel
   380, // Latias
   381, // Latios
-  // === Gen 4 sub-legends ===
+  // === Gen 4 ===
   480, // Uxie
   481, // Mesprit
   482, // Azelf
   485, // Heatran
   486, // Regigigas
   488, // Cresselia
-  // === Gen 5 sub-legends ===
+  // === Gen 5 ===
   638, // Cobalion
   639, // Terrakion
   640, // Virizion
@@ -615,13 +828,13 @@ export const RARITY_4_POOL: number[] = [
   803, // Poipole
   805, // Stakataka
   806, // Blacephalon
-  // === Gen 8 sub-legends ===
+  // === Gen 8 ===
   891, // Kubfu
   894, // Regieleki
   895, // Regidrago
   896, // Glastrier
   897, // Spectrier
-  // === Gen 9 sub-legends & Paradox ===
+  // === Gen 9 ===
   1001, // Wo-Chien
   1002, // Chien-Pao
   1003, // Ting-Lu
@@ -683,7 +896,6 @@ export const RARITY_5_POOL: number[] = [
   802, // Marshadow
   804, // Naganadel
   807, // Zeraora
-  808, // Meltan
   // === Gen 8 ===
   888, // Zacian
   889, // Zamazenta
@@ -708,59 +920,63 @@ export const RARITY_POOLS: Record<RarityTier, number[]> = {
 };
 
 // ──────────────────────────────────────────────────────────────
-// TYPE POOLS — PokeAPI type ID → Pokemon list (for type-influenced drops)
+// TYPE POOLS — PokeAPI type IDs (1=Normal,2=Fighting,3=Flying,4=Poison,
+//   5=Ground,6=Rock,7=Bug,8=Ghost,9=Steel,10=Fire,11=Water,12=Grass,
+//   13=Electric,14=Psychic,15=Ice,16=Dragon,17=Dark,18=Fairy)
 // ──────────────────────────────────────────────────────────────
 export const TYPE_POOLS: Record<number, number[]> = {
   // Normal (1)
-  1: [16, 19, 83, 108, 115, 128, 132, 133, 137, 143, 161, 163, 174, 206, 234,
-      235, 241, 261, 263, 276, 287, 293, 327, 351, 352, 396, 399, 417, 441,
-      446, 504, 506, 519, 531, 626, 676, 694, 765, 766, 775, 819, 831, 915],
+  1: [16, 19, 21, 52, 83, 84, 108, 113, 115, 128, 132, 133, 137, 143, 161,
+      163, 174, 202, 203, 206, 234, 235, 241, 261, 263, 276, 287, 293, 327,
+      351, 352, 396, 399, 417, 441, 446, 504, 506, 519, 531, 626, 676, 765,
+      766, 775, 819, 831, 915],
   // Fighting (2)
-  2: [66, 236, 296, 447, 532, 538, 539, 559, 624, 674, 739, 760, 766, 870, 979, 984, 992],
-  // Flying (3) — PokeAPI: 1=Normal,2=Fighting,3=Flying,4=Poison,5=Ground,...
-  3: [16, 276, 396, 519, 627, 661, 701, 722, 731, 821, 912, 940, 962, 973],
+  2: [56, 66, 106, 107, 236, 296, 447, 532, 538, 539, 559, 624, 674, 739,
+      760, 766, 870, 979, 984, 992],
+  // Flying (3)
+  3: [16, 21, 84, 276, 396, 519, 627, 661, 701, 722, 731, 821, 912, 940, 962, 973],
   // Poison (4)
-  4: [23, 41, 43, 69, 316, 690, 747, 757],
+  4: [23, 29, 32, 41, 43, 69, 88, 316, 690, 747, 757],
   // Ground (5)
   5: [50, 74, 104, 111, 194, 231, 328, 339, 449, 529, 551, 622, 659, 749, 843, 980],
   // Rock (6)
-  6: [74, 95, 111, 138, 140, 304, 345, 347, 408, 410, 524, 557, 564, 566, 688, 696, 698,
-      712, 744, 932, 968, 974, 989, 995],
+  6: [74, 95, 111, 138, 140, 304, 345, 347, 408, 410, 524, 557, 564, 566,
+      688, 696, 698, 712, 744, 932, 968, 974, 989, 995],
   // Bug (7)
-  7: [10, 13, 165, 167, 265, 283, 313, 314, 401, 415, 540, 557, 595, 636, 664,
-      736, 742, 751, 824, 850, 917, 919],
+  7: [10, 13, 46, 48, 165, 167, 265, 266, 268, 283, 290, 313, 314, 401, 415,
+      540, 557, 595, 636, 664, 736, 742, 751, 824, 850, 917, 919],
   // Ghost (8)
-  8: [92, 353, 355, 442, 607, 622, 679, 708, 710, 854, 885, 971, 1012],
+  8: [92, 200, 353, 355, 442, 607, 622, 679, 708, 710, 854, 885, 971, 1012],
   // Steel (9)
   9: [81, 304, 374, 436, 599, 624, 707, 772, 878, 957, 990, 993, 995, 1018],
   // Fire (10)
-  10: [4, 37, 58, 77, 155, 218, 228, 255, 322, 390, 498, 607, 636, 653, 667,
-       725, 757, 813, 850, 909, 935, 1020],
+  10: [4, 37, 58, 77, 155, 218, 228, 240, 255, 322, 390, 498, 607, 636, 653,
+       667, 725, 757, 813, 850, 909, 935, 1020],
   // Water (11)
-  11: [7, 54, 60, 72, 116, 118, 129, 158, 170, 183, 258, 270, 283, 318, 339,
-       341, 501, 535, 564, 656, 690, 692, 728, 746, 747, 751, 816, 833, 846,
-       882, 883, 912, 963, 977],
+  11: [7, 54, 60, 72, 86, 90, 98, 116, 118, 129, 158, 170, 183, 258, 270, 283,
+       318, 339, 341, 366, 501, 535, 564, 656, 690, 692, 728, 746, 747, 751,
+       816, 833, 846, 882, 883, 912, 963, 977],
   // Grass (12)
-  12: [1, 43, 69, 152, 187, 191, 252, 270, 273, 285, 315, 345, 387, 420, 495,
-       546, 548, 556, 590, 650, 672, 704, 722, 753, 761, 810, 829, 906, 928,
-       948, 950, 1011],
+  12: [1, 43, 69, 102, 152, 187, 191, 252, 270, 273, 285, 315, 345, 387, 420,
+       495, 546, 548, 556, 590, 650, 672, 704, 722, 753, 761, 810, 829, 906,
+       928, 948, 950, 1011],
   // Electric (13)
-  13: [100, 172, 179, 309, 403, 417, 479, 522, 587, 595, 694, 777, 835, 848,
-       871, 937, 939, 921, 991, 994, 1021],
+  13: [25, 81, 100, 125, 172, 179, 239, 309, 403, 417, 479, 522, 587, 595,
+       694, 777, 835, 848, 871, 937, 939, 921, 991, 994, 1021],
   // Psychic (14)
-  14: [63, 79, 102, 177, 196, 280, 325, 343, 360, 374, 433, 436, 474, 517,
-       527, 561, 574, 577, 605, 677, 786, 856, 876, 985, 987, 1015],
+  14: [63, 79, 96, 102, 122, 124, 177, 196, 202, 280, 325, 343, 360, 374,
+       436, 474, 574, 577, 605, 677, 786, 856, 876, 985, 987, 1015],
   // Ice (15)
-  15: [220, 361, 478, 615, 712, 872, 874, 875, 883, 896, 974, 985, 991],
+  15: [86, 220, 238, 361, 363, 478, 615, 712, 872, 874, 875, 883, 896, 974, 985, 991],
   // Dragon (16)
-  16: [147, 333, 371, 443, 610, 633, 704, 714, 782, 885, 996, 984, 988,
-       993, 998, 1007, 1008, 1019, 1020, 1021],
+  16: [147, 148, 333, 371, 372, 443, 610, 633, 704, 714, 782, 885, 996, 984,
+       988, 993, 998, 1007, 1008, 1019, 1020, 1021],
   // Dark (17)
-  17: [198, 215, 228, 261, 302, 318, 353, 359, 430, 442, 509, 551, 559, 570,
-       624, 629, 633, 686, 827, 859, 941, 983, 1001, 1002, 1003, 1004, 1005],
+  17: [197, 198, 215, 228, 261, 302, 318, 353, 359, 430, 442, 509, 551, 559,
+       570, 624, 629, 633, 686, 827, 859, 941, 983, 1001, 1002, 1003, 1004, 1005],
   // Fairy (18)
-  18: [35, 39, 174, 175, 183, 209, 280, 303, 546, 574, 669, 682, 684, 700,
-       702, 742, 764, 777, 778, 868, 906, 926, 1016],
+  18: [35, 39, 173, 174, 175, 183, 209, 280, 303, 546, 574, 669, 682, 684,
+       700, 702, 742, 764, 777, 778, 868, 906, 926, 1016],
 };
 
 // ──────────────────────────────────────────────────────────────
@@ -768,8 +984,12 @@ export const TYPE_POOLS: Record<number, number[]> = {
 // ──────────────────────────────────────────────────────────────
 export const THEMATIC_POOLS: Record<string, number[]> = {
   sport: [
+    56,  // Mankey
     66,  // Machop
+    106, // Hitmonlee
+    107, // Hitmonchan
     236, // Tyrogue
+    237, // Hitmontop
     447, // Riolu
     532, // Timburr
     538, // Throh
@@ -901,14 +1121,13 @@ export const THEMATIC_POOLS: Record<string, number[]> = {
     1000, // Gholdengo
   ],
   other: [
-    133, // Eevee
     132, // Ditto
-    351, // Castform
-    174, // Igglybuff
-    39,  // Jigglypuff
+    133, // Eevee
     172, // Pichu
+    174, // Igglybuff
     175, // Togepi
     327, // Spinda
+    351, // Castform
     441, // Chatot
     531, // Audino
     741, // Oricorio

@@ -2,6 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '../lib/supabase';
 import type { AuthUser } from '../lib/supabase';
 
+function toFakeEmail(username: string): string {
+  return `${username.toLowerCase().replace(/[^a-z0-9]/g, '')}@pomopokemon.app`;
+}
+
 export function useAuth() {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
@@ -36,7 +40,8 @@ export function useAuth() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = useCallback(async (email: string, password: string, username: string) => {
+  const signUp = useCallback(async (username: string, password: string) => {
+    const email = toFakeEmail(username);
     const { data, error } = await supabase.auth.signUp({ email, password });
     if (error) throw error;
     if (data.user) {
@@ -44,7 +49,8 @@ export function useAuth() {
     }
   }, []);
 
-  const signIn = useCallback(async (email: string, password: string) => {
+  const signIn = useCallback(async (username: string, password: string) => {
+    const email = toFakeEmail(username);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
   }, []);

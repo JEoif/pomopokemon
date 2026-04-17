@@ -10,28 +10,22 @@ export function useAuth() {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = async (userId: string, email: string) => {
-    const { data } = await supabase
-      .from('profiles')
-      .select('username')
-      .eq('id', userId)
-      .single();
-    return { id: userId, email, username: data?.username ?? null };
-  };
-
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    // Charge la session initiale
+    supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
-        const profile = await fetchProfile(session.user.id, session.user.email!);
-        setUser(profile);
+        setUser({ id: session.user.id, email: session.user.email!, username: null });
       }
       setLoading(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    // ⚠️ Ne PAS appeler supabase.from() ici — deadlock avec signUp/signIn
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
-        const profile = await fetchProfile(session.user.id, session.user.email!);
-        setUser(profile);
+        setUser(prev => {
+          if (prev?.id === session.user!.id) return prev;
+          return { id: session.user!.id, email: session.user!.email!, username: null };
+        });
       } else {
         setUser(null);
       }
@@ -39,6 +33,19 @@ export function useAuth() {
 
     return () => subscription.unsubscribe();
   }, []);
+
+  // Charge le username séparément (jamais dans onAuthStateChange)
+  useEffect(() => {
+    if (!user?.id || user.username !== null) return;
+    supabase
+      .from('profiles')
+      .select('username')
+      .eq('id', user.id)
+      .single()
+      .then(({ data }) => {
+        setUser(prev => prev ? { ...prev, username: data?.username ?? null } : null);
+      });
+  }, [user?.id]);
 
   const signUp = useCallback(async (username: string, password: string) => {
     const email = toFakeEmail(username);
@@ -63,7 +70,7 @@ export function useAuth() {
   const updateUsername = useCallback(async (username: string) => {
     if (!user) return;
     await supabase.from('profiles').update({ username }).eq('id', user.id);
-    setUser((prev) => prev ? { ...prev, username } : null);
+    setUser(prev => prev ? { ...prev, username } : null);
   }, [user]);
 
   return { user, loading, signUp, signIn, signOut, updateUsername };

@@ -100,22 +100,60 @@ export const RARITY_1_POOL: number[] = [
   // === Gen 4 ===
   396, // Starly
   399, // Bidoof
+  401, // Kricketot
   403, // Shinx
+  406, // Budew
+  412, // Burmy
+  418, // Buizel
   420, // Cherubi
+  422, // Shellos
+  425, // Drifloon
+  427, // Buneary
+  431, // Glameow
+  433, // Chingling
+  434, // Stunky
   436, // Bronzor
+  438, // Bonsly
+  439, // Mime Jr.
+  440, // Happiny
   449, // Hippopotas
+  451, // Skorupi
+  453, // Croagunk
+  456, // Finneon
+  458, // Mantyke
+  459, // Snover
   // === Gen 5 ===
   504, // Patrat
   506, // Lillipup
   509, // Purrloin
+  511, // Pansage
+  513, // Pansear
+  515, // Panpour
+  517, // Munna
   519, // Pidove
+  522, // Blitzle
   524, // Roggenrola
+  527, // Woobat
   532, // Timburr
   535, // Tympole
   540, // Sewaddle
+  543, // Venipede
   546, // Cottonee
   548, // Petilil
+  554, // Darumaka
   557, // Dwebble
+  562, // Yamask
+  568, // Trubbish
+  572, // Minccino
+  580, // Ducklett
+  582, // Vanillite
+  585, // Deerling
+  588, // Karrablast
+  592, // Frillish
+  597, // Ferroseed
+  602, // Tynamo
+  613, // Cubchoo
+  616, // Shelmet
   // === Gen 6 ===
   659, // Bunnelby
   661, // Fletchling
@@ -353,6 +391,16 @@ export const RARITY_2_POOL: number[] = [
   387, // Turtwig
   390, // Chimchar
   393, // Piplup
+  // === Gen 4 mid-evos ===
+  388, // Grotle
+  391, // Monferno
+  394, // Prinplup
+  397, // Staravia
+  402, // Kricketune
+  404, // Luxio
+  413, // Wormadam
+  414, // Mothim
+  444, // Gabite
   // === Gen 4 cool bases ===
   408, // Cranidos
   410, // Shieldon
@@ -370,6 +418,33 @@ export const RARITY_2_POOL: number[] = [
   495, // Snivy
   498, // Tepig
   501, // Oshawott
+  // === Gen 5 mid-evos ===
+  496, // Servine
+  499, // Pignite
+  502, // Dewott
+  507, // Herdier
+  520, // Tranquill
+  525, // Boldore
+  533, // Gurdurr
+  536, // Palpitoad
+  537, // Seismitoad
+  541, // Swadloon
+  544, // Whirlipede
+  550, // Basculin
+  583, // Vanillish
+  552, // Krokorok
+  561, // Sigilyph
+  575, // Gothorita
+  578, // Duosion
+  600, // Klang
+  603, // Eelektrik
+  605, // Elgyem
+  608, // Lampent
+  611, // Fraxure
+  619, // Mienfoo
+  628, // Braviary
+  630, // Mandibuzz
+  634, // Zweilous
   // === Gen 5 cool bases ===
   529, // Drilbur
   551, // Sandile
@@ -404,6 +479,15 @@ export const RARITY_2_POOL: number[] = [
   650, // Chespin
   653, // Fennekin
   656, // Froakie
+  // === Gen 6 mid-evos ===
+  651, // Quilladin
+  654, // Braixen
+  657, // Frogadier
+  662, // Fletchinder
+  665, // Spewpa
+  670, // Floette
+  680, // Doublade
+  705, // Sliggoo
   // === Gen 6 cool bases & singles ===
   674, // Pancham
   676, // Furfrou
@@ -426,6 +510,14 @@ export const RARITY_2_POOL: number[] = [
   722, // Rowlet
   725, // Litten
   728, // Popplio
+  // === Gen 7 mid-evos ===
+  723, // Dartrix
+  726, // Torracat
+  729, // Brionne
+  732, // Trumbeak
+  737, // Charjabug
+  762, // Steenee
+  783, // Hakamo-o
   // === Gen 7 cool bases & singles ===
   764, // Comfey
   765, // Oranguru
@@ -633,15 +725,42 @@ export const RARITY_3_POOL: number[] = [
   389, // Torterra
   392, // Infernape
   395, // Empoleon
+  398, // Staraptor
+  400, // Bibarel
+  405, // Luxray
+  407, // Roserade
+  409, // Rampardos
+  411, // Bastiodon
+  416, // Vespiquen
+  419, // Floatzel
+  421, // Cherrim
+  424, // Ambipom
+  426, // Drifblim
+  428, // Lopunny
+  429, // Mismagius
+  430, // Honchkrow
+  432, // Purugly
+  435, // Skuntank
+  437, // Bronzong
   445, // Garchomp
   448, // Lucario
+  450, // Hippowdon
+  454, // Toxicroak
+  457, // Lumineon
+  460, // Abomasnow
   461, // Weavile
   462, // Magnezone
+  463, // Lickilicky
+  464, // Rhyperior
+  465, // Tangrowth
   466, // Electivire
   467, // Magmortar
   468, // Togekiss
+  469, // Yanmega
+  470, // Leafeon
   471, // Glaceon
   472, // Gliscor
+  473, // Mamoswine
   474, // Porygon-Z
   475, // Gallade
   476, // Probopass
@@ -651,16 +770,53 @@ export const RARITY_3_POOL: number[] = [
   497, // Serperior
   500, // Emboar
   503, // Samurott
+  505, // Watchog
+  508, // Stoutland
+  510, // Liepard
+  512, // Simisage
+  514, // Simisear
+  516, // Simipour
+  518, // Musharna
+  521, // Unfezant
+  523, // Zebstrika
+  526, // Gigalith
+  528, // Swoobat
   530, // Excadrill
   534, // Conkeldurr
+  542, // Leavanny
+  545, // Scolipede
+  547, // Whimsicott
+  549, // Lilligant
   553, // Krookodile
+  555, // Darmanitan
+  558, // Crustle
   560, // Scrafty
+  563, // Cofagrigus
+  565, // Carracosta
+  567, // Archeops
+  569, // Garbodor
   571, // Zoroark
+  573, // Cinccino
+  576, // Gothitelle
+  579, // Reuniclus
+  581, // Swanna
+  584, // Vanilluxe
+  586, // Sawsbuck
+  589, // Escavalier
+  591, // Amoonguss
+  593, // Jellicent
+  594, // Alomomola
   596, // Galvantula
+  598, // Ferrothorn
   601, // Klinklang
   604, // Eelektross
+  606, // Beheeyem
   609, // Chandelure
   612, // Haxorus
+  614, // Beartic
+  617, // Accelgor
+  620, // Mienshao
+  621, // Druddigon
   623, // Golurk
   625, // Bisharp
   635, // Hydreigon
@@ -669,11 +825,21 @@ export const RARITY_3_POOL: number[] = [
   652, // Chesnaught
   655, // Delphox
   658, // Greninja
+  660, // Diggersby
+  663, // Talonflame
   666, // Vivillon
+  668, // Pyroar
+  671, // Florges
+  673, // Gogoat
   675, // Pangoro
+  678, // Meowstic
   681, // Aegislash
   683, // Aromatisse
   685, // Slurpuff
+  687, // Malamar
+  689, // Barbaracle
+  691, // Dragalge
+  693, // Clawitzer
   695, // Heliolisk
   697, // Tyrantrum
   699, // Aurorus
@@ -689,7 +855,10 @@ export const RARITY_3_POOL: number[] = [
   727, // Incineroar
   730, // Primarina
   733, // Toucannon
+  735, // Gumshoos
   738, // Vikavolt
+  740, // Crabominable
+  743, // Ribombee
   745, // Lycanroc
   748, // Toxapex
   750, // Mudsdale
@@ -699,6 +868,8 @@ export const RARITY_3_POOL: number[] = [
   758, // Salazzle
   760, // Bewear
   763, // Tsareena
+  768, // Golisopod
+  770, // Palossand
   773, // Silvally
   784, // Kommo-o
   808, // Meltan
@@ -813,6 +984,9 @@ export const RARITY_4_POOL: number[] = [
   641, // Tornadus
   642, // Thundurus
   645, // Landorus
+  // === Gen 7 pre-legendaries ===
+  789, // Cosmog
+  790, // Cosmoem
   // === Gen 7 Tapus & Ultra Beasts ===
   785, // Tapu Koko
   786, // Tapu Lele
@@ -870,6 +1044,8 @@ export const RARITY_5_POOL: number[] = [
   483, // Dialga
   484, // Palkia
   487, // Giratina
+  489, // Phione
+  490, // Manaphy
   491, // Darkrai
   492, // Shaymin
   493, // Arceus
